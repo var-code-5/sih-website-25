@@ -10,9 +10,10 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
-export default function LoginPage() {
+export default function SignupPage() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+
   const handleGoogleSignup = async () => {
     setIsLoading(true);
     try {
@@ -21,12 +22,12 @@ export default function LoginPage() {
       
       toast.success(`Welcome ${user.displayName}!`);
       
-      // Redirect to dashboard or home page after successful login
+      // Redirect to dashboard or home page after successful signup
       router.push("/dashboard");
       
     } catch (error: any) {
-      console.error("Error signing in with Google:", error);
-      toast.error(error.message || "Failed to sign in with Google");
+      console.error("Error signing up with Google:", error);
+      toast.error(error.message || "Failed to sign up with Google");
     } finally {
       setIsLoading(false);
     }
@@ -42,7 +43,7 @@ export default function LoginPage() {
               disabled={isLoading}
               className="w-full h-12 bg-gradient-to-b from-secondary to-tertiary hover:bg-gradient-to-b hover:from-secondary/90 hover:to-tertiary/90 text-white font-medium rounded-full text-base cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLoading ? "Signing in..." : "Login With Google"}
+              {isLoading ? "Signing up..." : "Signup With Google"}
             </Button>
 
             <div className="flex items-center">
@@ -52,12 +53,12 @@ export default function LoginPage() {
             </div>
 
             <div className="text-center">
-              <span className="text-sm text-gray-600">Don't have an account? </span>
+              <span className="text-sm text-gray-600">Already have an account? </span>
               <Link 
-                href="/auth/signup" 
+                href="/auth/login" 
                 className="text-sm text-primary hover:text-primary/80 font-medium"
               >
-                Sign Up
+                Login
               </Link>
             </div>
           </div>
