@@ -3,11 +3,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { User, onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "@/utils/firebase";
+import { TokenManager } from "@/utils/tokenManager";
 
 interface AuthContextType {
   user: User | null;
   loading: boolean;
   logout: () => Promise<void>;
+  getIdToken: (forceRefresh?: boolean) => Promise<string | null>;
+  isAuthenticated: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -29,10 +32,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await signOut(auth);
   };
 
+  // Method to get a fresh ID token using the TokenManager
+  const getIdToken = async (forceRefresh = false): Promise<string | null> => {
+    return TokenManager.getIdToken(forceRefresh);
+  };
+
   const value = {
     user,
     loading,
     logout,
+    getIdToken,
+    isAuthenticated: !!user,
   };
 
   return (
