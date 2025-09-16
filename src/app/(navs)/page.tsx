@@ -1,4 +1,5 @@
 import { ArrowUpRight, CalendarArrowDown, Dot } from "lucide-react";
+import Link from "next/link";
 import Marquee from "react-fast-marquee";
 
 export default function Home() {
@@ -17,9 +18,11 @@ export default function Home() {
           Public Pulse empowers <span className="text-primary">citizens</span> and{" "}
           <span className="text-primary">governments</span> through transparent, collaborative, and real-time grievance resolution.
         </p>
-        <button className="bg-black text-white px-4 py-2 md:px-6 md:py-3 rounded-full">
-          Get Started
-        </button>
+        <Link href="/dashboard" className="cursor-pointer">
+          <button className="bg-black text-white px-4 py-2 md:px-6 md:py-3 rounded-full">
+            Get Started
+          </button>
+        </Link>
       </div>
 
       <div className="absolute bottom-0 w-full">
