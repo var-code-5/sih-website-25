@@ -42,10 +42,10 @@ export default function page() {
 
   return (
     <div className='w-full h-full flex justify-center items-center'>
-      <div className='w-[70%] h-full'>
+      <div className='w-full sm:w-[70%] h-full'>
         <h1 className='text-3xl font-semibold mt-2'>Today's Overview</h1>
         <p className='text-gray-500 mb-6'>Bengaluru's progress summary</p>
-        <div className='w-full h-1/3 grid grid-cols-3 gap-4'>
+        <div className='w-full min-h-1/3 grid grid-cols-1 sm:grid-cols-3 gap-4'>
           {todaysOverview.map((item, index) => (
             <div key={index} className={`p-4 rounded-lg shadow-md flex flex-col justify-between ${item.background}`}>
               <div className='flex flex-col items-start justify-evenly h-full'>
@@ -69,7 +69,7 @@ export default function page() {
           <DataTable columns={columns} data={data} />
         </div>
       </div>
-      <div className='w-[30%] h-full'>
+      <div className='w-[30%] h-full hidden sm:block'>
         {/* <Maps /> */}
       </div>
     </div>
