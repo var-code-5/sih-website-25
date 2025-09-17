@@ -70,7 +70,7 @@ export default function page() {
         </div>
       </div>
       <div className='w-[30%] h-full hidden sm:block'>
-        <Maps />
+        {/* <Maps /> */}
       </div>
     </div>
   )
